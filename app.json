@@ -1,0 +1,66 @@
+{
+  "expo": {
+    "name": "Horaire Prière",
+    "slug": "horaire-priere",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": false,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a1f"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.horaire.priere",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Nous avons besoin de votre position pour calculer les horaires de prière et la direction de la Qibla",
+        "NSLocationAlwaysUsageDescription": "Nous avons besoin de votre position pour les notifications de prière",
+        "NSSpeechRecognitionUsageDescription": "Pour la recherche vocale",
+        "NSMicrophoneUsageDescription": "Pour la reconnaissance vocale"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1a1a1f"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.horaire.priere",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "RECORD_AUDIO",
+        "VIBRATE",
+        "RECEIVE_BOOT_COMPLETED",
+        "SCHEDULE_EXACT_ALARM"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "sounds": ["./assets/sounds/adhan.wav"]
+        }
+      ],
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Pour la recherche vocale"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Pour calculer les horaires de prière"
+        }
+      ]
+    ]
+  }
+}

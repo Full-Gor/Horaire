@@ -1,0 +1,97 @@
+{
+  "app": {
+    "name": "Prayer Times",
+    "subtitle": "Prayer Schedule"
+  },
+  "prayers": {
+    "fajr": "Fajr",
+    "sunrise": "Sunrise",
+    "dhuhr": "Dhuhr",
+    "asr": "Asr",
+    "maghrib": "Maghrib",
+    "isha": "Isha"
+  },
+  "home": {
+    "nextPrayer": "Next Prayer",
+    "timeRemaining": "Time Remaining",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "currentPrayer": "Current Prayer",
+    "hijriDate": "Hijri Date",
+    "gregorianDate": "Gregorian Date"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "notifications": "Notifications",
+    "notificationsDesc": "Receive prayer reminders",
+    "location": "Location",
+    "locationDesc": "Current city",
+    "calculationMethod": "Calculation Method",
+    "madhab": "Madhab",
+    "adjustments": "Manual Adjustments",
+    "darkMode": "Dark Mode",
+    "about": "About",
+    "version": "Version"
+  },
+  "calculationMethods": {
+    "mwl": "Muslim World League",
+    "isna": "ISNA (North America)",
+    "egypt": "Egyptian Authority",
+    "makkah": "Umm al-Qura (Makkah)",
+    "karachi": "University of Karachi",
+    "tehran": "Tehran Geophysics Institute",
+    "jafari": "Shia Ithna Ashari Method"
+  },
+  "madhabs": {
+    "shafi": "Shafi'i",
+    "hanafi": "Hanafi"
+  },
+  "qibla": {
+    "title": "Qibla Direction",
+    "direction": "Direction",
+    "distance": "Distance to Kaaba",
+    "degrees": "degrees",
+    "km": "km"
+  },
+  "notifications": {
+    "prayerTime": "It's time for {{prayer}}",
+    "prayerReminder": "{{prayer}} in {{minutes}} minutes"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds"
+  },
+  "months": {
+    "hijri": {
+      "1": "Muharram",
+      "2": "Safar",
+      "3": "Rabi al-Awwal",
+      "4": "Rabi al-Thani",
+      "5": "Jumada al-Awwal",
+      "6": "Jumada al-Thani",
+      "7": "Rajab",
+      "8": "Sha'ban",
+      "9": "Ramadan",
+      "10": "Shawwal",
+      "11": "Dhul Qi'dah",
+      "12": "Dhul Hijjah"
+    }
+  },
+  "days": {
+    "sunday": "Sunday",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday"
+  }
+}

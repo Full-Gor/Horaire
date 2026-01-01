@@ -1,0 +1,97 @@
+{
+  "app": {
+    "name": "礼拝時間",
+    "subtitle": "祈りのスケジュール"
+  },
+  "prayers": {
+    "fajr": "ファジュル",
+    "sunrise": "日の出",
+    "dhuhr": "ズフル",
+    "asr": "アスル",
+    "maghrib": "マグリブ",
+    "isha": "イシャー"
+  },
+  "home": {
+    "nextPrayer": "次の礼拝",
+    "timeRemaining": "残り時間",
+    "today": "今日",
+    "tomorrow": "明日",
+    "currentPrayer": "現在の礼拝",
+    "hijriDate": "ヒジュラ暦",
+    "gregorianDate": "西暦"
+  },
+  "settings": {
+    "title": "設定",
+    "language": "言語",
+    "notifications": "通知",
+    "notificationsDesc": "礼拝リマインダーを受信",
+    "location": "場所",
+    "locationDesc": "現在の都市",
+    "calculationMethod": "計算方法",
+    "madhab": "マズハブ",
+    "adjustments": "手動調整",
+    "darkMode": "ダークモード",
+    "about": "アプリについて",
+    "version": "バージョン"
+  },
+  "calculationMethods": {
+    "mwl": "イスラム世界連盟",
+    "isna": "北米イスラム協会",
+    "egypt": "エジプト当局",
+    "makkah": "ウンム・アル・クラー（メッカ）",
+    "karachi": "カラチ大学",
+    "tehran": "テヘラン地球物理学研究所",
+    "jafari": "シーア派十二イマーム派"
+  },
+  "madhabs": {
+    "shafi": "シャーフィイー派",
+    "hanafi": "ハナフィー派"
+  },
+  "qibla": {
+    "title": "キブラの方向",
+    "direction": "方向",
+    "distance": "カアバまでの距離",
+    "degrees": "度",
+    "km": "km"
+  },
+  "notifications": {
+    "prayerTime": "{{prayer}}の時間です",
+    "prayerReminder": "{{prayer}}まであと{{minutes}}分"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "retry": "再試行",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "ok": "OK",
+    "hours": "時間",
+    "minutes": "分",
+    "seconds": "秒"
+  },
+  "months": {
+    "hijri": {
+      "1": "ムハッラム",
+      "2": "サファル",
+      "3": "ラビーウル・アウワル",
+      "4": "ラビーウッ・サーニー",
+      "5": "ジュマーダル・ウーラー",
+      "6": "ジュマーダッ・サーニー",
+      "7": "ラジャブ",
+      "8": "シャアバーン",
+      "9": "ラマダーン",
+      "10": "シャウワール",
+      "11": "ズルカアダ",
+      "12": "ズルヒッジャ"
+    }
+  },
+  "days": {
+    "sunday": "日曜日",
+    "monday": "月曜日",
+    "tuesday": "火曜日",
+    "wednesday": "水曜日",
+    "thursday": "木曜日",
+    "friday": "金曜日",
+    "saturday": "土曜日"
+  }
+}

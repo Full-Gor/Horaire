@@ -1,0 +1,97 @@
+{
+  "app": {
+    "name": "礼拜时间",
+    "subtitle": "祈祷时间表"
+  },
+  "prayers": {
+    "fajr": "晨礼",
+    "sunrise": "日出",
+    "dhuhr": "晌礼",
+    "asr": "晡礼",
+    "maghrib": "昏礼",
+    "isha": "宵礼"
+  },
+  "home": {
+    "nextPrayer": "下次礼拜",
+    "timeRemaining": "剩余时间",
+    "today": "今天",
+    "tomorrow": "明天",
+    "currentPrayer": "当前礼拜",
+    "hijriDate": "伊斯兰历",
+    "gregorianDate": "公历"
+  },
+  "settings": {
+    "title": "设置",
+    "language": "语言",
+    "notifications": "通知",
+    "notificationsDesc": "接收礼拜提醒",
+    "location": "位置",
+    "locationDesc": "当前城市",
+    "calculationMethod": "计算方法",
+    "madhab": "教法学派",
+    "adjustments": "手动调整",
+    "darkMode": "深色模式",
+    "about": "关于",
+    "version": "版本"
+  },
+  "calculationMethods": {
+    "mwl": "世界穆斯林联盟",
+    "isna": "北美伊斯兰协会",
+    "egypt": "埃及权威机构",
+    "makkah": "乌姆古拉（麦加）",
+    "karachi": "卡拉奇大学",
+    "tehran": "德黑兰地球物理研究所",
+    "jafari": "什叶派十二伊玛目派"
+  },
+  "madhabs": {
+    "shafi": "沙斐仪派",
+    "hanafi": "哈乃斐派"
+  },
+  "qibla": {
+    "title": "朝向方向",
+    "direction": "方向",
+    "distance": "到天房的距离",
+    "degrees": "度",
+    "km": "公里"
+  },
+  "notifications": {
+    "prayerTime": "{{prayer}}时间到了",
+    "prayerReminder": "{{prayer}}还有{{minutes}}分钟"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "retry": "重试",
+    "save": "保存",
+    "cancel": "取消",
+    "ok": "确定",
+    "hours": "小时",
+    "minutes": "分钟",
+    "seconds": "秒"
+  },
+  "months": {
+    "hijri": {
+      "1": "穆哈拉姆月",
+      "2": "萨法尔月",
+      "3": "赖比尔·敖外鲁月",
+      "4": "赖比尔·阿色尼月",
+      "5": "主马达·敖外鲁月",
+      "6": "主马达·阿色尼月",
+      "7": "赖哲卜月",
+      "8": "舍尔邦月",
+      "9": "赖买丹月",
+      "10": "闪瓦鲁月",
+      "11": "都尔喀尔德月",
+      "12": "都尔黑哲月"
+    }
+  },
+  "days": {
+    "sunday": "星期日",
+    "monday": "星期一",
+    "tuesday": "星期二",
+    "wednesday": "星期三",
+    "thursday": "星期四",
+    "friday": "星期五",
+    "saturday": "星期六"
+  }
+}
