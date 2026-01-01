@@ -12,7 +12,7 @@ import {
 
 // Calculation method parameters
 const CALCULATION_METHODS: Record<CalculationMethod, CalculationMethodInfo> = {
-  uoif: { id: 'uoif', name: 'UOIF / Institut Sounnah', fajrAngle: 12, ishaAngle: 12 },
+  uoif: { id: 'uoif', name: 'UOIF / Institut Sounnah', fajrAngle: 18, ishaAngle: 18 },
   mwl: { id: 'mwl', name: 'Muslim World League', fajrAngle: 18, ishaAngle: 17 },
   isna: { id: 'isna', name: 'ISNA', fajrAngle: 15, ishaAngle: 15 },
   egypt: { id: 'egypt', name: 'Egyptian Authority', fajrAngle: 19.5, ishaAngle: 17.5 },
@@ -104,7 +104,7 @@ function calculateAsrTime(
   const latRad = toRadians(latitude);
   const decRad = toRadians(declination);
 
-  const asrAngle = -toDegrees(
+  const asrAngle = toDegrees(
     Math.atan(1 / (factor + Math.tan(Math.abs(latRad - decRad))))
   );
 
