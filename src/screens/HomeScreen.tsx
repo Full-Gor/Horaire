@@ -5,10 +5,10 @@ import {
   StyleSheet,
   ScrollView,
   RefreshControl,
-  SafeAreaView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { Feather } from '@expo/vector-icons';
 
@@ -45,6 +45,7 @@ interface Props {
 
 export function HomeScreen({ onLocationPress }: Props) {
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(true);
   const [settings, setSettings] = useState<AppSettings | null>(null);
@@ -138,7 +139,7 @@ export function HomeScreen({ onLocationPress }: Props) {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <StatusBar style="light" />
 
       <LinearGradient
@@ -148,7 +149,10 @@ export function HomeScreen({ onLocationPress }: Props) {
 
       <ScrollView
         style={styles.scrollView}
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[
+          styles.scrollContent,
+          { paddingTop: insets.top + 20 }
+        ]}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl
@@ -161,15 +165,8 @@ export function HomeScreen({ onLocationPress }: Props) {
       >
         {/* Header */}
         <View style={styles.header}>
-          <View style={styles.headerLeft}>
-            <Text style={styles.appTitle}>{t('app.name')}</Text>
-            <Text style={styles.appSubtitle}>{t('app.subtitle')}</Text>
-          </View>
-          <View style={styles.headerRight}>
-            <View style={styles.mosqueIcon}>
-              <Text style={styles.mosqueEmoji}>🕌</Text>
-            </View>
-          </View>
+          <Text style={styles.appTitle}>{t('app.name')}</Text>
+          <Text style={styles.appSubtitle}>{t('app.subtitle')}</Text>
         </View>
 
         {/* Location */}
@@ -231,7 +228,7 @@ export function HomeScreen({ onLocationPress }: Props) {
         {/* Bottom spacer for tab bar */}
         <View style={styles.bottomSpacer} />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -259,16 +256,9 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     padding: 20,
-    paddingTop: 10,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     marginBottom: 20,
-  },
-  headerLeft: {
-    flex: 1,
   },
   appTitle: {
     ...typography.h1,
@@ -277,21 +267,6 @@ const styles = StyleSheet.create({
   appSubtitle: {
     ...typography.bodyMuted,
     marginTop: 4,
-  },
-  headerRight: {
-    marginLeft: 16,
-  },
-  mosqueIcon: {
-    width: 56,
-    height: 56,
-    borderRadius: 16,
-    backgroundColor: colors.cardBg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    ...neuShadow.raised,
-  },
-  mosqueEmoji: {
-    fontSize: 28,
   },
   section: {
     marginBottom: 20,

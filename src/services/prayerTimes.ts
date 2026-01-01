@@ -12,6 +12,7 @@ import {
 
 // Calculation method parameters
 const CALCULATION_METHODS: Record<CalculationMethod, CalculationMethodInfo> = {
+  uoif: { id: 'uoif', name: 'UOIF / Institut Sounnah', fajrAngle: 12, ishaAngle: 12 },
   mwl: { id: 'mwl', name: 'Muslim World League', fajrAngle: 18, ishaAngle: 17 },
   isna: { id: 'isna', name: 'ISNA', fajrAngle: 15, ishaAngle: 15 },
   egypt: { id: 'egypt', name: 'Egyptian Authority', fajrAngle: 19.5, ishaAngle: 17.5 },

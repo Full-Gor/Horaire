@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable, Vibration } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Vibration, Platform } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, borderRadius, neuShadow } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { TabName } from '../types';
@@ -26,6 +27,8 @@ interface Props {
 
 export function TabBar({ activeTab, onTabPress }: Props) {
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
+  const bottomPadding = Math.max(insets.bottom, 16);
 
   const handlePress = (tab: TabName) => {
     Vibration.vibrate(10);
@@ -33,9 +36,9 @@ export function TabBar({ activeTab, onTabPress }: Props) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingBottom: bottomPadding }]}>
       <LinearGradient
-        colors={['rgba(30, 30, 36, 0.95)', 'rgba(26, 26, 31, 0.98)']}
+        colors={['rgba(30, 30, 36, 0.98)', 'rgba(26, 26, 31, 1)']}
         style={styles.gradient}
       />
 
@@ -95,14 +98,14 @@ const styles = StyleSheet.create({
     right: 0,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.05)',
+    backgroundColor: colors.background,
   },
   gradient: {
     ...StyleSheet.absoluteFillObject,
   },
   tabsContainer: {
     flexDirection: 'row',
-    paddingBottom: 20,
-    paddingTop: 8,
+    paddingTop: 12,
     paddingHorizontal: 16,
   },
   tab: {

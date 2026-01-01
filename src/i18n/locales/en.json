@@ -35,6 +35,7 @@
     "version": "Version"
   },
   "calculationMethods": {
+    "uoif": "UOIF / Institut Sounnah (12°)",
     "mwl": "Muslim World League",
     "isna": "ISNA (North America)",
     "egypt": "Egyptian Authority",

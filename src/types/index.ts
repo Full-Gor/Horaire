@@ -46,6 +46,7 @@ export interface QiblaDirection {
 
 // Calculation method
 export type CalculationMethod =
+  | 'uoif'     // UOIF / Institut Sounnah (France) - 12°/12°
   | 'mwl'      // Muslim World League
   | 'isna'     // Islamic Society of North America
   | 'egypt'    // Egyptian General Authority of Survey
@@ -115,7 +116,7 @@ export interface CalculationMethodInfo {
 // Default settings
 export const defaultSettings: AppSettings = {
   language: 'fr',
-  calculationMethod: 'mwl',
+  calculationMethod: 'uoif',
   madhab: 'shafi',
   notificationsEnabled: true,
   notificationMinutesBefore: 15,
