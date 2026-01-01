@@ -111,11 +111,22 @@ function calculateAsrTime(
   return calculatePrayerTime(asrAngle, latitude, declination, false);
 }
 
-// Format time as HH:mm
+// Format time as HH:mm (normalize to 0-24 range)
 function formatTime(hours: number): string {
-  const h = Math.floor(hours);
-  const m = Math.round((hours - h) * 60);
-  return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+  // Normalize to 0-24 range
+  let h = hours;
+  while (h < 0) h += 24;
+  while (h >= 24) h -= 24;
+
+  const hour = Math.floor(h);
+  const min = Math.round((h - hour) * 60);
+
+  // Handle edge case where rounding gives 60 minutes
+  if (min === 60) {
+    return `${(hour + 1).toString().padStart(2, '0')}:00`;
+  }
+
+  return `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
 }
 
 // Main calculation function
