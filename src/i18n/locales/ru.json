@@ -9,7 +9,9 @@
     "dhuhr": "Зухр",
     "asr": "Аср",
     "maghrib": "Магриб",
-    "isha": "Иша"
+    "isha": "Иша",
+    "midnightIslamic": "Середина ночи",
+    "lastThirdNight": "Последняя треть ночи"
   },
   "home": {
     "nextPrayer": "Следующая Молитва",
@@ -18,7 +20,8 @@
     "tomorrow": "Завтра",
     "currentPrayer": "Текущая Молитва",
     "hijriDate": "Дата по Хиджре",
-    "gregorianDate": "Григорианская Дата"
+    "gregorianDate": "Григорианская Дата",
+    "nightTimes": "Ночные Часы"
   },
   "settings": {
     "title": "Настройки",

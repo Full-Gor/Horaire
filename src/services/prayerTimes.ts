@@ -167,14 +167,39 @@ export function calculatePrayerTimes(
   // Apply adjustments
   const adj = adjustments || { fajr: 0, sunrise: 0, dhuhr: 0, asr: 0, maghrib: 0, isha: 0 };
 
+  // Calculate adjusted times in hours
+  const fajrAdjusted = fajr + adj.fajr / 60;
+  const sunsetAdjusted = sunset + adj.maghrib / 60;
+
+  // Calculate night times (from Maghrib to Fajr next day)
+  // Night starts at Maghrib and ends at Fajr
+  // We need to calculate the duration of the night
+  let nightDuration: number;
+  if (fajrAdjusted > sunsetAdjusted) {
+    // Rare case: Fajr is after Maghrib on same day (doesn't normally happen)
+    nightDuration = fajrAdjusted - sunsetAdjusted;
+  } else {
+    // Normal case: night crosses midnight
+    // Night = (24 - Maghrib) + Fajr
+    nightDuration = (24 - sunsetAdjusted) + fajrAdjusted;
+  }
+
+  // Middle of the night = Maghrib + (nightDuration / 2)
+  const midnightIslamic = sunsetAdjusted + nightDuration / 2;
+
+  // Last third of the night = Maghrib + (2 * nightDuration / 3)
+  const lastThirdNight = sunsetAdjusted + (2 * nightDuration) / 3;
+
   return {
     date: date.toISOString().split('T')[0],
-    fajr: formatTime(fajr + adj.fajr / 60),
+    fajr: formatTime(fajrAdjusted),
     sunrise: formatTime(sunrise + adj.sunrise / 60),
     dhuhr: formatTime(midday + adj.dhuhr / 60),
     asr: formatTime(asr + adj.asr / 60),
-    maghrib: formatTime(sunset + adj.maghrib / 60),
+    maghrib: formatTime(sunsetAdjusted),
     isha: formatTime(isha + adj.isha / 60),
+    midnightIslamic: formatTime(midnightIslamic),
+    lastThirdNight: formatTime(lastThirdNight),
   };
 }
 

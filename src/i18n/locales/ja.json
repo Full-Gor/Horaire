@@ -9,7 +9,9 @@
     "dhuhr": "ズフル",
     "asr": "アスル",
     "maghrib": "マグリブ",
-    "isha": "イシャー"
+    "isha": "イシャー",
+    "midnightIslamic": "夜半",
+    "lastThirdNight": "夜の最後の三分の一"
   },
   "home": {
     "nextPrayer": "次の礼拝",
@@ -18,6 +20,7 @@
     "tomorrow": "明日",
     "currentPrayer": "現在の礼拝",
     "hijriDate": "ヒジュラ暦",
+    "nightTimes": "夜の時間",
     "gregorianDate": "西暦"
   },
   "settings": {

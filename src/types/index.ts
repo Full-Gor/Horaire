@@ -17,6 +17,9 @@ export interface DailyPrayerTimes {
   asr: string;
   maghrib: string;
   isha: string;
+  // Night times (calculated from Maghrib to Fajr)
+  midnightIslamic: string;  // Middle of the night (Maghrib + half of night duration)
+  lastThirdNight: string;   // Last third of night (Maghrib + 2/3 of night duration)
 }
 
 // Hijri date

@@ -9,7 +9,9 @@
     "dhuhr": "الظهر",
     "asr": "العصر",
     "maghrib": "المغرب",
-    "isha": "العشاء"
+    "isha": "العشاء",
+    "midnightIslamic": "نصف الليل",
+    "lastThirdNight": "الثلث الأخير من الليل"
   },
   "home": {
     "nextPrayer": "الصلاة القادمة",
@@ -18,6 +20,7 @@
     "tomorrow": "غداً",
     "currentPrayer": "الصلاة الحالية",
     "hijriDate": "التاريخ الهجري",
+    "nightTimes": "أوقات الليل",
     "gregorianDate": "التاريخ الميلادي"
   },
   "settings": {

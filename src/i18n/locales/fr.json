@@ -9,7 +9,9 @@
     "dhuhr": "Dhuhr",
     "asr": "Asr",
     "maghrib": "Maghrib",
-    "isha": "Isha"
+    "isha": "Isha",
+    "midnightIslamic": "Moitié de la nuit",
+    "lastThirdNight": "Dernier tiers de la nuit"
   },
   "home": {
     "nextPrayer": "Prochaine prière",
@@ -18,7 +20,8 @@
     "tomorrow": "Demain",
     "currentPrayer": "Prière en cours",
     "hijriDate": "Date Hégirien",
-    "gregorianDate": "Date Grégorien"
+    "gregorianDate": "Date Grégorien",
+    "nightTimes": "Horaires de nuit"
   },
   "settings": {
     "title": "Paramètres",

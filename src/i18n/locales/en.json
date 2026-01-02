@@ -9,7 +9,9 @@
     "dhuhr": "Dhuhr",
     "asr": "Asr",
     "maghrib": "Maghrib",
-    "isha": "Isha"
+    "isha": "Isha",
+    "midnightIslamic": "Middle of the Night",
+    "lastThirdNight": "Last Third of the Night"
   },
   "home": {
     "nextPrayer": "Next Prayer",
@@ -18,7 +20,8 @@
     "tomorrow": "Tomorrow",
     "currentPrayer": "Current Prayer",
     "hijriDate": "Hijri Date",
-    "gregorianDate": "Gregorian Date"
+    "gregorianDate": "Gregorian Date",
+    "nightTimes": "Night Times"
   },
   "settings": {
     "title": "Settings",

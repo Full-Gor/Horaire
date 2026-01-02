@@ -225,6 +225,42 @@ export function HomeScreen({ onLocationPress }: Props) {
           </GlassCard>
         </View>
 
+        {/* Night Times Section */}
+        {prayerTimes && (
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <View style={styles.nightIconRow}>
+                <Feather name="moon" size={16} color={colors.primary} />
+                <Text style={[styles.sectionTitle, styles.nightTitle]}>
+                  {t('home.nightTimes') || 'Horaires de nuit'}
+                </Text>
+              </View>
+            </View>
+
+            <GlassCard style={styles.nightCard}>
+              <View style={styles.nightTimeRow}>
+                <View style={styles.nightTimeItem}>
+                  <Text style={styles.nightTimeLabel}>
+                    {t('prayers.midnightIslamic')}
+                  </Text>
+                  <Text style={styles.nightTimeValue}>
+                    {prayerTimes.midnightIslamic}
+                  </Text>
+                </View>
+                <View style={styles.nightTimeDivider} />
+                <View style={styles.nightTimeItem}>
+                  <Text style={styles.nightTimeLabel}>
+                    {t('prayers.lastThirdNight')}
+                  </Text>
+                  <Text style={styles.nightTimeValue}>
+                    {prayerTimes.lastThirdNight}
+                  </Text>
+                </View>
+              </View>
+            </GlassCard>
+          </View>
+        )}
+
         {/* Bottom spacer for tab bar */}
         <View style={styles.bottomSpacer} />
       </ScrollView>
@@ -292,6 +328,43 @@ const styles = StyleSheet.create({
   },
   prayerListCard: {
     padding: 8,
+  },
+  nightIconRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  nightTitle: {
+    marginLeft: 4,
+  },
+  nightCard: {
+    padding: 16,
+  },
+  nightTimeRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  nightTimeItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  nightTimeDivider: {
+    width: 1,
+    height: 40,
+    backgroundColor: colors.border,
+    opacity: 0.3,
+  },
+  nightTimeLabel: {
+    ...typography.caption,
+    color: colors.textMuted,
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  nightTimeValue: {
+    ...typography.h2,
+    color: colors.primary,
+    fontSize: 24,
   },
   bottomSpacer: {
     height: 100,

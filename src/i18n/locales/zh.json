@@ -9,7 +9,9 @@
     "dhuhr": "晌礼",
     "asr": "晡礼",
     "maghrib": "昏礼",
-    "isha": "宵礼"
+    "isha": "宵礼",
+    "midnightIslamic": "午夜",
+    "lastThirdNight": "夜晚最后三分之一"
   },
   "home": {
     "nextPrayer": "下次礼拜",
@@ -18,6 +20,7 @@
     "tomorrow": "明天",
     "currentPrayer": "当前礼拜",
     "hijriDate": "伊斯兰历",
+    "nightTimes": "夜间时间",
     "gregorianDate": "公历"
   },
   "settings": {
