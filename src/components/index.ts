@@ -7,3 +7,4 @@ export { LocationDisplay } from './LocationDisplay';
 export { TabBar } from './TabBar';
 export { SettingsItem } from './SettingsItem';
 export { SelectModal } from './SelectModal';
+export { PrayerModal } from './PrayerModal';

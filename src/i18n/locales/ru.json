@@ -97,5 +97,45 @@
     "thursday": "Четверг",
     "friday": "Пятница",
     "saturday": "Суббота"
+  },
+  "reminders": {
+    "title": "Напоминания",
+    "todayReminder": "Напоминание дня",
+    "dailyReminder": "Ежедневное напоминание",
+    "allReminders": "Все напоминания",
+    "allCategories": "Все",
+    "noReminders": "Нет напоминаний в этой категории",
+    "seeMore": "Больше напоминаний",
+    "categories": {
+      "quran": "Коран",
+      "hadith": "Хадис",
+      "dua": "Дуа",
+      "wisdom": "Мудрость",
+      "fiqh": "Фикх",
+      "sira": "Сира",
+      "general": "Общее"
+    }
+  },
+  "admin": {
+    "enterPin": "Введите PIN администратора",
+    "wrongPin": "Неверный PIN",
+    "error": "Ошибка",
+    "manageReminders": "Управление напоминаниями",
+    "addReminder": "Добавить напоминание",
+    "editReminder": "Редактировать напоминание",
+    "remindersCount": "напоминаний",
+    "deleteConfirm": "Удалить",
+    "deleteConfirmMessage": "Вы уверены, что хотите удалить это напоминание?",
+    "delete": "Удалить",
+    "fillRequired": "Заполните обязательные поля",
+    "saveError": "Ошибка при сохранении",
+    "date": "Дата (MM-DD или YYYY-MM-DD)",
+    "titleFr": "Заголовок (Французский) *",
+    "titleAr": "Заголовок (Арабский)",
+    "contentFr": "Содержание (Французский) *",
+    "contentAr": "Содержание (Арабский)",
+    "source": "Источник (ссылка)",
+    "category": "Категория",
+    "isActive": "Активно"
   }
 }

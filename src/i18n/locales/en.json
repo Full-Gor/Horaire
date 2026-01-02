@@ -97,5 +97,45 @@
     "thursday": "Thursday",
     "friday": "Friday",
     "saturday": "Saturday"
+  },
+  "reminders": {
+    "title": "Reminders",
+    "todayReminder": "Today's Reminder",
+    "dailyReminder": "Daily Reminder",
+    "allReminders": "All Reminders",
+    "allCategories": "All",
+    "noReminders": "No reminders in this category",
+    "seeMore": "See more reminders",
+    "categories": {
+      "quran": "Quran",
+      "hadith": "Hadith",
+      "dua": "Supplication",
+      "wisdom": "Wisdom",
+      "fiqh": "Fiqh",
+      "sira": "Sira",
+      "general": "General"
+    }
+  },
+  "admin": {
+    "enterPin": "Enter admin PIN",
+    "wrongPin": "Wrong PIN",
+    "error": "Error",
+    "manageReminders": "Manage Reminders",
+    "addReminder": "Add Reminder",
+    "editReminder": "Edit Reminder",
+    "remindersCount": "reminders",
+    "deleteConfirm": "Delete",
+    "deleteConfirmMessage": "Are you sure you want to delete this reminder?",
+    "delete": "Delete",
+    "fillRequired": "Please fill in required fields",
+    "saveError": "Error while saving",
+    "date": "Date (MM-DD or YYYY-MM-DD)",
+    "titleFr": "Title (French) *",
+    "titleAr": "Title (Arabic)",
+    "contentFr": "Content (French) *",
+    "contentAr": "Content (Arabic)",
+    "source": "Source (reference)",
+    "category": "Category",
+    "isActive": "Active"
   }
 }

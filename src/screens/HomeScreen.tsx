@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   RefreshControl,
+  TouchableOpacity,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
@@ -18,6 +19,7 @@ import {
   CountdownTimer,
   DateDisplay,
   LocationDisplay,
+  PrayerModal,
 } from '../components';
 import { colors, borderRadius, neuShadow, gradients } from '../theme/colors';
 import { typography } from '../theme/typography';
@@ -41,9 +43,10 @@ import {
 
 interface Props {
   onLocationPress: () => void;
+  onRemindersPress: () => void;
 }
 
-export function HomeScreen({ onLocationPress }: Props) {
+export function HomeScreen({ onLocationPress, onRemindersPress }: Props) {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const [refreshing, setRefreshing] = useState(false);
@@ -55,6 +58,11 @@ export function HomeScreen({ onLocationPress }: Props) {
   const [nextPrayer, setNextPrayer] = useState<PrayerTimeInfo | null>(null);
   const [hijriDate, setHijriDate] = useState<HijriDate | null>(null);
   const [currentDate, setCurrentDate] = useState(new Date());
+
+  // Modal state
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedPrayer, setSelectedPrayer] = useState<PrayerName | null>(null);
+  const [selectedPrayerTime, setSelectedPrayerTime] = useState<string>('');
 
   const loadData = useCallback(async () => {
     try {
@@ -128,6 +136,21 @@ export function HomeScreen({ onLocationPress }: Props) {
   const getPrayerLabel = (name: PrayerName): string => {
     return t(`prayers.${name}`);
   };
+
+  const handlePrayerPress = useCallback((prayer: PrayerTimeInfo) => {
+    // Only allow clicking on main prayers (not sunrise)
+    if (prayer.name !== 'sunrise') {
+      setSelectedPrayer(prayer.name);
+      setSelectedPrayerTime(prayer.time);
+      setModalVisible(true);
+    }
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setModalVisible(false);
+    setSelectedPrayer(null);
+    setSelectedPrayerTime('');
+  }, []);
 
   if (loading) {
     return (
@@ -212,15 +235,20 @@ export function HomeScreen({ onLocationPress }: Props) {
 
           <GlassCard style={styles.prayerListCard}>
             {prayerInfo.map((prayer) => (
-              <PrayerCard
+              <TouchableOpacity
                 key={prayer.name}
-                name={prayer.name}
-                time={prayer.time}
-                label={getPrayerLabel(prayer.name)}
-                isNext={prayer.isNext}
-                isCurrent={prayer.isCurrent}
-                isPassed={prayer.isPassed}
-              />
+                onPress={() => handlePrayerPress(prayer)}
+                activeOpacity={prayer.name === 'sunrise' ? 1 : 0.7}
+              >
+                <PrayerCard
+                  name={prayer.name}
+                  time={prayer.time}
+                  label={getPrayerLabel(prayer.name)}
+                  isNext={prayer.isNext}
+                  isCurrent={prayer.isCurrent}
+                  isPassed={prayer.isPassed}
+                />
+              </TouchableOpacity>
             ))}
           </GlassCard>
         </View>
@@ -264,6 +292,15 @@ export function HomeScreen({ onLocationPress }: Props) {
         {/* Bottom spacer for tab bar */}
         <View style={styles.bottomSpacer} />
       </ScrollView>
+
+      {/* Prayer Modal */}
+      <PrayerModal
+        visible={modalVisible}
+        prayer={selectedPrayer}
+        prayerTime={selectedPrayerTime}
+        onClose={handleCloseModal}
+        onReminderPress={onRemindersPress}
+      />
     </View>
   );
 }

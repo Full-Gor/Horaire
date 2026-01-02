@@ -153,3 +153,45 @@ export const arabicPrayerNames: Record<PrayerName, string> = {
   maghrib: 'المغرب',
   isha: 'العشاء',
 };
+
+// Daily religious reminder
+export interface DailyReminder {
+  id: string;
+  date: string; // Format: "MM-DD" for recurring yearly, or "YYYY-MM-DD" for specific date
+  titleFr: string;
+  titleAr?: string;
+  contentFr: string;
+  contentAr?: string;
+  source?: string; // Quran verse, Hadith reference, etc.
+  category: ReminderCategory;
+  isActive: boolean;
+  createdAt: number;
+  updatedAt: number;
+}
+
+// Reminder categories
+export type ReminderCategory =
+  | 'quran'      // Quranic verses
+  | 'hadith'     // Prophetic sayings
+  | 'dua'        // Supplications
+  | 'wisdom'     // Islamic wisdom
+  | 'fiqh'       // Islamic jurisprudence
+  | 'sira'       // Prophet's biography
+  | 'general';   // General reminders
+
+// Admin credentials (simple for local app)
+export interface AdminCredentials {
+  isAdmin: boolean;
+  adminPin?: string;
+}
+
+// Reminder colors by category
+export const reminderCategoryColors: Record<ReminderCategory, string> = {
+  quran: '#10b981',    // Green for Quran
+  hadith: '#f59e0b',   // Amber for Hadith
+  dua: '#8b5cf6',      // Purple for Dua
+  wisdom: '#3b82f6',   // Blue for Wisdom
+  fiqh: '#ec4899',     // Pink for Fiqh
+  sira: '#14b8a6',     // Teal for Sira
+  general: '#6b7280',  // Gray for General
+};

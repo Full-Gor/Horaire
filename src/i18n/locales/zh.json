@@ -97,5 +97,45 @@
     "thursday": "星期四",
     "friday": "星期五",
     "saturday": "星期六"
+  },
+  "reminders": {
+    "title": "提醒",
+    "todayReminder": "今日提醒",
+    "dailyReminder": "每日提醒",
+    "allReminders": "所有提醒",
+    "allCategories": "全部",
+    "noReminders": "此类别无提醒",
+    "seeMore": "查看更多提醒",
+    "categories": {
+      "quran": "古兰经",
+      "hadith": "圣训",
+      "dua": "祈祷",
+      "wisdom": "智慧",
+      "fiqh": "教法",
+      "sira": "先知传记",
+      "general": "通用"
+    }
+  },
+  "admin": {
+    "enterPin": "输入管理员PIN码",
+    "wrongPin": "PIN码错误",
+    "error": "错误",
+    "manageReminders": "管理提醒",
+    "addReminder": "添加提醒",
+    "editReminder": "编辑提醒",
+    "remindersCount": "条提醒",
+    "deleteConfirm": "删除",
+    "deleteConfirmMessage": "确定要删除此提醒吗？",
+    "delete": "删除",
+    "fillRequired": "请填写必填字段",
+    "saveError": "保存时出错",
+    "date": "日期 (MM-DD 或 YYYY-MM-DD)",
+    "titleFr": "标题 (法语) *",
+    "titleAr": "标题 (阿拉伯语)",
+    "contentFr": "内容 (法语) *",
+    "contentAr": "内容 (阿拉伯语)",
+    "source": "来源 (参考)",
+    "category": "类别",
+    "isActive": "启用"
   }
 }

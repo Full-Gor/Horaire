@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 
 import './src/i18n';
-import { HomeScreen, QiblaScreen, SettingsScreen } from './src/screens';
+import { HomeScreen, QiblaScreen, SettingsScreen, RemindersScreen, AdminRemindersScreen } from './src/screens';
 import { TabBar } from './src/components';
 import { colors } from './src/theme/colors';
 import { typography } from './src/theme/typography';
@@ -14,6 +14,8 @@ import { TabName } from './src/types';
 import { getSettings } from './src/services/storage';
 import { requestNotificationPermissions } from './src/services/notifications';
 import i18n from './src/i18n';
+
+type ScreenName = TabName | 'reminders' | 'adminReminders';
 
 // Splash screen component
 function SplashScreen({ onFinish }: { onFinish: () => void }) {
@@ -146,6 +148,7 @@ const splashStyles = StyleSheet.create({
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<TabName>('home');
+  const [currentScreen, setCurrentScreen] = useState<ScreenName>('home');
   const [slideAnim] = useState(new Animated.Value(0));
 
   const initialize = useCallback(async () => {
@@ -178,7 +181,6 @@ export default function App() {
   const handleTabChange = useCallback(
     (tab: TabName) => {
       const tabIndex = { home: 0, qibla: 1, settings: 2 };
-      const currentIndex = tabIndex[activeTab];
       const newIndex = tabIndex[tab];
 
       Animated.timing(slideAnim, {
@@ -189,8 +191,9 @@ export default function App() {
       }).start();
 
       setActiveTab(tab);
+      setCurrentScreen(tab);
     },
-    [activeTab, slideAnim]
+    [slideAnim]
   );
 
   const handleLocationPress = useCallback(() => {
@@ -198,22 +201,60 @@ export default function App() {
     handleTabChange('settings');
   }, [handleTabChange]);
 
+  const handleRemindersPress = useCallback(() => {
+    setCurrentScreen('reminders');
+  }, []);
+
+  const handleAdminAccess = useCallback(() => {
+    setCurrentScreen('adminReminders');
+  }, []);
+
+  const handleBackToHome = useCallback(() => {
+    setCurrentScreen('home');
+  }, []);
+
+  const handleBackToReminders = useCallback(() => {
+    setCurrentScreen('reminders');
+  }, []);
+
   if (isLoading) {
     return <SplashScreen onFinish={handleSplashFinish} />;
   }
 
   const renderScreen = () => {
-    switch (activeTab) {
+    switch (currentScreen) {
       case 'home':
-        return <HomeScreen onLocationPress={handleLocationPress} />;
+        return (
+          <HomeScreen
+            onLocationPress={handleLocationPress}
+            onRemindersPress={handleRemindersPress}
+          />
+        );
       case 'qibla':
         return <QiblaScreen />;
       case 'settings':
         return <SettingsScreen />;
+      case 'reminders':
+        return (
+          <RemindersScreen
+            onBack={handleBackToHome}
+            onAdminAccess={handleAdminAccess}
+          />
+        );
+      case 'adminReminders':
+        return <AdminRemindersScreen onBack={handleBackToReminders} />;
       default:
-        return <HomeScreen onLocationPress={handleLocationPress} />;
+        return (
+          <HomeScreen
+            onLocationPress={handleLocationPress}
+            onRemindersPress={handleRemindersPress}
+          />
+        );
     }
   };
+
+  // Hide tab bar on sub-screens
+  const showTabBar = currentScreen === 'home' || currentScreen === 'qibla' || currentScreen === 'settings';
 
   return (
     <SafeAreaProvider>
@@ -226,7 +267,7 @@ export default function App() {
 
         <View style={styles.screenContainer}>{renderScreen()}</View>
 
-        <TabBar activeTab={activeTab} onTabPress={handleTabChange} />
+        {showTabBar && <TabBar activeTab={activeTab} onTabPress={handleTabChange} />}
       </View>
     </SafeAreaProvider>
   );

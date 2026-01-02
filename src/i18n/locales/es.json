@@ -97,5 +97,45 @@
     "thursday": "Jueves",
     "friday": "Viernes",
     "saturday": "Sábado"
+  },
+  "reminders": {
+    "title": "Recordatorios",
+    "todayReminder": "Recordatorio del día",
+    "dailyReminder": "Recordatorio diario",
+    "allReminders": "Todos los recordatorios",
+    "allCategories": "Todos",
+    "noReminders": "No hay recordatorios en esta categoría",
+    "seeMore": "Ver más recordatorios",
+    "categories": {
+      "quran": "Corán",
+      "hadith": "Hadiz",
+      "dua": "Súplica",
+      "wisdom": "Sabiduría",
+      "fiqh": "Fiqh",
+      "sira": "Sira",
+      "general": "General"
+    }
+  },
+  "admin": {
+    "enterPin": "Ingrese el PIN de administrador",
+    "wrongPin": "PIN incorrecto",
+    "error": "Error",
+    "manageReminders": "Gestionar recordatorios",
+    "addReminder": "Agregar recordatorio",
+    "editReminder": "Editar recordatorio",
+    "remindersCount": "recordatorios",
+    "deleteConfirm": "Eliminar",
+    "deleteConfirmMessage": "¿Está seguro de eliminar este recordatorio?",
+    "delete": "Eliminar",
+    "fillRequired": "Complete los campos requeridos",
+    "saveError": "Error al guardar",
+    "date": "Fecha (MM-DD o YYYY-MM-DD)",
+    "titleFr": "Título (Francés) *",
+    "titleAr": "Título (Árabe)",
+    "contentFr": "Contenido (Francés) *",
+    "contentAr": "Contenido (Árabe)",
+    "source": "Fuente (referencia)",
+    "category": "Categoría",
+    "isActive": "Activo"
   }
 }

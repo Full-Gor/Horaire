@@ -97,5 +97,45 @@
     "thursday": "木曜日",
     "friday": "金曜日",
     "saturday": "土曜日"
+  },
+  "reminders": {
+    "title": "リマインダー",
+    "todayReminder": "今日のリマインダー",
+    "dailyReminder": "毎日のリマインダー",
+    "allReminders": "すべてのリマインダー",
+    "allCategories": "すべて",
+    "noReminders": "このカテゴリにリマインダーはありません",
+    "seeMore": "もっと見る",
+    "categories": {
+      "quran": "クルアーン",
+      "hadith": "ハディース",
+      "dua": "ドゥアー",
+      "wisdom": "知恵",
+      "fiqh": "フィクフ",
+      "sira": "シーラ",
+      "general": "一般"
+    }
+  },
+  "admin": {
+    "enterPin": "管理者PINを入力",
+    "wrongPin": "PINが間違っています",
+    "error": "エラー",
+    "manageReminders": "リマインダー管理",
+    "addReminder": "リマインダーを追加",
+    "editReminder": "リマインダーを編集",
+    "remindersCount": "件のリマインダー",
+    "deleteConfirm": "削除",
+    "deleteConfirmMessage": "このリマインダーを削除しますか？",
+    "delete": "削除",
+    "fillRequired": "必須項目を入力してください",
+    "saveError": "保存中にエラーが発生しました",
+    "date": "日付 (MM-DD または YYYY-MM-DD)",
+    "titleFr": "タイトル (フランス語) *",
+    "titleAr": "タイトル (アラビア語)",
+    "contentFr": "内容 (フランス語) *",
+    "contentAr": "内容 (アラビア語)",
+    "source": "出典 (参照)",
+    "category": "カテゴリ",
+    "isActive": "有効"
   }
 }

@@ -97,5 +97,45 @@
     "thursday": "الخميس",
     "friday": "الجمعة",
     "saturday": "السبت"
+  },
+  "reminders": {
+    "title": "التذكيرات",
+    "todayReminder": "تذكير اليوم",
+    "dailyReminder": "التذكير اليومي",
+    "allReminders": "جميع التذكيرات",
+    "allCategories": "الكل",
+    "noReminders": "لا توجد تذكيرات في هذه الفئة",
+    "seeMore": "المزيد من التذكيرات",
+    "categories": {
+      "quran": "القرآن",
+      "hadith": "الحديث",
+      "dua": "الدعاء",
+      "wisdom": "الحكمة",
+      "fiqh": "الفقه",
+      "sira": "السيرة",
+      "general": "عام"
+    }
+  },
+  "admin": {
+    "enterPin": "أدخل رمز PIN للمسؤول",
+    "wrongPin": "رمز PIN خاطئ",
+    "error": "خطأ",
+    "manageReminders": "إدارة التذكيرات",
+    "addReminder": "إضافة تذكير",
+    "editReminder": "تعديل التذكير",
+    "remindersCount": "تذكيرات",
+    "deleteConfirm": "حذف",
+    "deleteConfirmMessage": "هل أنت متأكد من حذف هذا التذكير؟",
+    "delete": "حذف",
+    "fillRequired": "يرجى ملء الحقول المطلوبة",
+    "saveError": "خطأ أثناء الحفظ",
+    "date": "التاريخ (MM-DD أو YYYY-MM-DD)",
+    "titleFr": "العنوان (فرنسي) *",
+    "titleAr": "العنوان (عربي)",
+    "contentFr": "المحتوى (فرنسي) *",
+    "contentAr": "المحتوى (عربي)",
+    "source": "المصدر (المرجع)",
+    "category": "الفئة",
+    "isActive": "نشط"
   }
 }
