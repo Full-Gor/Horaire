@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Animated,
-  Easing,
   SafeAreaView,
   Dimensions,
+  Platform,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
-import Svg, { Circle, Line, Path, G, Text as SvgText } from 'react-native-svg';
+import Svg, { Circle, Line, G, Text as SvgText } from 'react-native-svg';
 import { Feather } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
+import { Magnetometer } from 'expo-sensors';
 
 import { GlassCard, NeuCard } from '../components';
 import { colors, borderRadius, neuShadow } from '../theme/colors';
@@ -25,12 +26,23 @@ import { Location, QiblaDirection } from '../types';
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const COMPASS_SIZE = SCREEN_WIDTH * 0.75;
 
+function getHeadingFromMagnetometer(data: { x: number; y: number; z: number }): number {
+  let angle = Math.atan2(data.y, data.x) * (180 / Math.PI);
+  // Adjust for device orientation (magnetometer returns bearing from East)
+  angle = angle - 90;
+  if (angle < 0) angle += 360;
+  return angle;
+}
+
 export function QiblaScreen() {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState<Location | null>(null);
   const [qibla, setQibla] = useState<QiblaDirection | null>(null);
-  const [rotation] = useState(new Animated.Value(0));
+  const [heading, setHeading] = useState(0);
+  const [magnetometerAvailable, setMagnetometerAvailable] = useState(true);
+  const compassRotation = useRef(new Animated.Value(0)).current;
+  const lastHeading = useRef(0);
 
   const loadQibla = useCallback(async () => {
     try {
@@ -46,32 +58,85 @@ export function QiblaScreen() {
         setLocation(loc);
         const direction = calculateQiblaDirection(loc);
         setQibla(direction);
-
-        // Animate compass
-        Animated.timing(rotation, {
-          toValue: direction.direction,
-          duration: 1500,
-          easing: Easing.elastic(1),
-          useNativeDriver: true,
-        }).start();
       }
     } catch (error) {
       console.error('Error calculating qibla:', error);
     } finally {
       setLoading(false);
     }
-  }, [rotation]);
+  }, []);
+
+  // Setup magnetometer
+  useEffect(() => {
+    let subscription: ReturnType<typeof Magnetometer.addListener> | null = null;
+
+    const startMagnetometer = async () => {
+      const available = await Magnetometer.isAvailableAsync();
+      if (!available) {
+        setMagnetometerAvailable(false);
+        return;
+      }
+
+      Magnetometer.setUpdateInterval(100);
+
+      subscription = Magnetometer.addListener((data) => {
+        const newHeading = getHeadingFromMagnetometer(data);
+        setHeading(newHeading);
+
+        // Smooth animation: handle 360°→0° wrap-around
+        let diff = newHeading - lastHeading.current;
+        if (diff > 180) diff -= 360;
+        if (diff < -180) diff += 360;
+
+        const currentVal = lastHeading.current + diff;
+        lastHeading.current = newHeading;
+
+        Animated.timing(compassRotation, {
+          toValue: -currentVal,
+          duration: 150,
+          useNativeDriver: true,
+        }).start();
+      });
+    };
+
+    startMagnetometer();
+
+    return () => {
+      if (subscription) {
+        subscription.remove();
+      }
+    };
+  }, [compassRotation]);
 
   useEffect(() => {
     loadQibla();
   }, [loadQibla]);
 
-  const rotateStyle = {
+  // Compass rotation: the dial rotates opposite to phone heading
+  // so that "N" always points to actual North
+  const compassRotateStyle = {
     transform: [
       {
-        rotate: rotation.interpolate({
-          inputRange: [0, 360],
-          outputRange: ['0deg', '360deg'],
+        rotate: compassRotation.interpolate({
+          inputRange: [-720, 720],
+          outputRange: ['-720deg', '720deg'],
+        }),
+      },
+    ],
+  };
+
+  // Qibla pointer rotation: fixed offset from North = qibla direction
+  // Combined with compass rotation so pointer always points to Qibla
+  const qiblaAngle = qibla ? qibla.direction : 0;
+  const qiblaRotateStyle = {
+    transform: [
+      {
+        rotate: compassRotation.interpolate({
+          inputRange: [-720, 720],
+          outputRange: [
+            `${-720 + qiblaAngle}deg`,
+            `${720 + qiblaAngle}deg`,
+          ],
         }),
       },
     ],
@@ -113,8 +178,8 @@ export function QiblaScreen() {
               {/* Outer glow */}
               <View style={styles.compassGlow} />
 
-              {/* Compass dial */}
-              <Animated.View style={[styles.compassDial, rotateStyle]}>
+              {/* Compass dial - rotates with phone */}
+              <Animated.View style={[styles.compassDial, compassRotateStyle]}>
                 <Svg
                   width={COMPASS_SIZE}
                   height={COMPASS_SIZE}
@@ -213,13 +278,13 @@ export function QiblaScreen() {
                 </Svg>
               </Animated.View>
 
-              {/* Kaaba pointer (fixed) */}
-              <View style={styles.kaabaPointer}>
+              {/* Kaaba pointer - rotates to always point toward Qibla */}
+              <Animated.View style={[styles.kaabaPointerAnimated, qiblaRotateStyle]}>
                 <View style={styles.kaabaIcon}>
                   <Text style={styles.kaabaEmoji}>🕋</Text>
                 </View>
                 <View style={styles.pointerLine} />
-              </View>
+              </Animated.View>
             </View>
           </GlassCard>
         </View>
@@ -241,12 +306,17 @@ export function QiblaScreen() {
           </View>
         )}
 
-        {/* Instructions */}
+        {/* Instructions / Calibration warning */}
         <GlassCard style={styles.instructionCard} intensity="light">
-          <Feather name="info" size={20} color={colors.textMuted} />
+          <Feather
+            name={magnetometerAvailable ? 'info' : 'alert-triangle'}
+            size={20}
+            color={magnetometerAvailable ? colors.textMuted : colors.gold}
+          />
           <Text style={styles.instructionText}>
-            Pointez le haut de votre téléphone dans la direction indiquée par le
-            symbole de la Kaaba 🕋
+            {magnetometerAvailable
+              ? 'Tenez votre téléphone à plat. La boussole suit votre orientation — alignez la Kaaba 🕋 devant vous.'
+              : 'Magnétomètre indisponible. La direction est calculée mais la boussole ne suivra pas votre orientation.'}
           </Text>
         </GlassCard>
       </View>
@@ -313,10 +383,14 @@ const styles = StyleSheet.create({
     width: COMPASS_SIZE,
     height: COMPASS_SIZE,
   },
-  kaabaPointer: {
+  kaabaPointerAnimated: {
     position: 'absolute',
     alignItems: 'center',
     top: 0,
+    left: COMPASS_SIZE / 2 - 22,
+    width: 44,
+    height: COMPASS_SIZE / 2,
+    transformOrigin: `22px ${COMPASS_SIZE / 2}px`,
   },
   kaabaIcon: {
     width: 44,
