@@ -212,14 +212,6 @@ export function SettingsScreen() {
               value="1.0.0"
               showChevron={false}
             />
-
-            <SettingsItem
-              icon="heart"
-              iconColor={colors.error}
-              title="Fait avec amour"
-              subtitle="Pour la communauté musulmane"
-              showChevron={false}
-            />
           </GlassCard>
         </View>
 
